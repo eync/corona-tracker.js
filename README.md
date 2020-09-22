@@ -7,6 +7,7 @@ Corona-Tracker.js - Made with Vanilla JS, Boilerplate: https://SuperBro.dev/ and
 - Mobile-friendly
 
 ### License
-Copyright © 2020 Sanjiv Rana - https://sanjiv.info -
+Copyright © 2020 Sanjiv Rana - https://sanjiv.info 
+
 Corona-Tracker.JS is free to use under the [open-source MIT-License](https://github.com/eync/corona-tracker.js/blob/master/LICENSE)
 
