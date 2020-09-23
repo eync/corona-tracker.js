@@ -1,3 +1,6 @@
+//api
+const url = 'https://disease.sh/v3/covid-19/all';
+
 //Array "storage" for pulled data
 let countries = [];
 const main = async () => {
