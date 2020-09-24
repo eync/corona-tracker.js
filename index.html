@@ -15,7 +15,9 @@
 	================= -->
 	<link rel="stylesheet" href="css/settings.css">
 	<link rel="stylesheet" href="css/coronatracker.css">
-	<link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css">
+    
 
 	<!-- && Favicon
 	================= -->
@@ -24,9 +26,10 @@
 	<!-- && IE support
 	================= -->
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-    <script src="js/corona-tracker.js"></script>
+    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    
+    
 </head>
 <body>
     <!-- && Start your website here, by replacing the code below.
@@ -37,7 +40,7 @@
             <h1>Covid-19</h1>
             <p>Statistics / Graphics</p>
         </div>
-        
+
         <div class="item span6 jc ac">
             <ul>
                 <li><a href="#">Global</a></li>
@@ -46,6 +49,9 @@
                 <li><a href="#">Info</a></li>
             </ul>
         </div> 
+
+        <div class="span12 jc"><h2>#Global Stats</h2></div>
+
         <!-- <div class="item span12 js tc swoopIn" id="makenicebg">
             <h2 class="ase"><span>Massive</span> Lorem Ipsum</h2>
             <p class="asl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -60,6 +66,10 @@
                 <li id="128">Deaths: <br></li>
             </ul>
         </div>
+        <div class="span12 jc"><h3>Continents</h3></div>
+        <div class="item span12">
+            <canvas id="myChart" width="400" height="150"></canvas>
+        </div>
         <div class="item span12 tc" id="footer">
             Copyright © 2020 Sanjiv Rana - <a href="https://github.com/eync/">Github Profile</a> // <a href="https://github.com/eync/corona-tracker.js">Github Repository</a>
         </div>
@@ -69,4 +79,5 @@
 
 
 </body>
+<script type="text/javascript" src="js/corona-tracker.js"></script>
 </html>
