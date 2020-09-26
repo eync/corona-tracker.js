@@ -8,6 +8,7 @@ Demo: https://sanjiv.info/corona-tracker.js
 - Countries option
 - Graphs and other statistics
 - Mobile-friendly
+- Make better functions
 
 ### License
 Copyright © 2020 Sanjiv Rana - https://sanjiv.info 

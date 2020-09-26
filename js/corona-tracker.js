@@ -65,8 +65,11 @@ const listItems = async () => {
 //data.datasets[0].data.push(40)
 //data.labels.push(40)
 
-
+//TODO wrap these inside function
 const url2 = 'https://disease.sh/v3/covid-19/continents';
+const url3 = 'https://disease.sh/v3/covid-19/historical/all';
+
+//make one function to work for all of them
 const continents = async () => {
     //if the API is down or broken, throw error.
     const response = await fetch(url2)
@@ -88,7 +91,29 @@ const continents = async () => {
     return data;
 
   }
+  const historicalData = async () => {
+    //if the API is down or broken, throw error.
+    const response = await fetch(url3)
+    if (response.status < 200 || response.status >= 400) {
+      throw new Error("Something is wrong with API server!")
+    }
+    //wait until response
+    const data = await response.json();
+    //for the received data and push in to the array 
+    let namesVal = [];
 
+        namesVal.push(Object.keys(data));
+        // console.log(JSON.stringify(itsHD, null, 2));
+    let deathsVal = (Object.values(data.deaths));
+    let casesVal = (Object.values(data.cases));
+    let recoveredVal = (Object.values(data.recovered));
+        
+    let deathsDate = Object.keys(data.deaths);
+    console.log(recoveredVal)
+    drawCharters2(casesVal, deathsVal, deathsDate, recoveredVal, namesVal)
+    return data;
+
+  }
 
 const drawCharters = (continentName, continentDead, continentDeathsStrn) => {
 
@@ -120,6 +145,68 @@ data: {
 
 });
 }
+const drawCharters2 = (casesVal, deathsVal, deathsDate, recoveredVal, namesVal) => {
+const gcx = document.getElementById('gcx');
+const mixedChart = new Chart(gcx, {
+    "type": "line",
+    "data": {
+        "labels": deathsDate,
+        "datasets": [{
+            "label": "Deaths",
+            "data": deathsVal,
+            "borderColor": "rgb(255, 99, 132)",
+            "backgroundColor": "rgba(255, 99, 132, 0.5)",
+            "pointStyle": "cross",
+            "hitRadius": "5",
+            "radius": "6",
+            "borderWidth":"3"
+        }, {
+            "label": "Cases",
+            "data": casesVal,
+            "type": "line",
+            "fill": true,
+            "backgroundColor": "rgba(54, 162, 235, 0.1)",
+            "borderColor": "rgb(54, 162, 235)",
+            "pointStyle": "cross",
+            "hitRadius": "5",
+            "radius": "6",
+            "borderWidth":"3"
+        }, {
+            "label": "Recovered",
+            "data": recoveredVal,
+            "type": "line",
+            "fill": true,
+            "borderJoinStyle": "round",
+            "backgroundColor": "rgba(14, 142, 15, 0.1)",
+            "borderColor": "rgb(14, 142, 15)",
+            "pointStyle": "cross",
+            "hitRadius": "5",
+            "radius": "6",
+            "borderWidth":"3"
+        }]
+    },
+    "options": {
+        "tooltips": {
+            "callbacks": {
+                label: function(tooltipItem, data) {
+                    return tooltipItem.yLabel.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+                }
+            }
+        },
+        "scales": {
+            "yAxes": [{
+                "ticks": {
+                    "beginAtZero": true,
+                    min: 100000
+                },
+                stacked: true
+            }]
+        }
+    }
+});
+}
+historicalData();
 continents();
 drawCharters();
+drawCharters2();
 listItems();
