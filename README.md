@@ -1,6 +1,9 @@
 # corona-tracker.js
 Corona-Tracker.js - Made with Vanilla JS, Boilerplate: https://SuperBro.dev/ and API by https://disease.sh/
 
+### Demo
+Demo: https://sanjiv.info/corona-tracker.js
+
 ### TODO
 - Countries option
 - Graphs and other statistics
