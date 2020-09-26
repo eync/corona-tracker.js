@@ -99,6 +99,8 @@ myChart = new Chart(ctx, {
 data: {
     labels: continentName,
     animateScale: true,
+    responsive: true,
+    maintainAspectRatio: false,
     datasets: [{
         label: continentDeathsStrn,
         data: continentDead,
