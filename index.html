@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<!-- && Website info 
-	================= -->
+    <!-- && Website info 
+    ================= -->
     <title>Corona Tracker.js - Covid19 stats</title>
-	<meta charset="UTF-8">
-	<meta name="author" content="S.R.">
+    <meta charset="UTF-8">
+    <meta name="author" content="S.R.">
 
-	<!-- && Mobile Meta (viewport)
-	================= -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- && Mobile Meta (viewport)
+    ================= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- && CSS files 
-	================= -->
-	<link rel="stylesheet" href="css/settings.css">
-	<link rel="stylesheet" href="css/coronatracker.css">
+    <!-- && CSS files 
+    ================= -->
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/coronatracker.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css">
     
 
-	<!-- && Favicon
-	================= -->
-	<link rel="icon" type="image/png" href="img/favicon.ico">
+    <!-- && Favicon
+    ================= -->
+    <link rel="icon" type="image/png" href="img/favicon.ico">
 
-	<!-- && IE support
-	================= -->
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <!-- && IE support
+    ================= -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script type="text/javascript" type="module" src="js/corona-tracker.js"></script>
-    <script type="text/javascript" type="module" src="js/charts.js"></script>
+    <script type="text/javascript" src="js/corona-tracker.js" defer></script>
+    <script type="text/javascript" src="js/charts.js" defer></script>
     
     
 </head>
@@ -46,18 +47,30 @@
         <div class="item span6 jc ac">
             <ul>
                 <li><a href="#">Global</a></li>
-                <li><a href="#">Countries</a></li>
-                <li><a href="#">Graphs</a></li> 
-                <li><a href="#">Info</a></li>
+                <li><a href="#">Continents</a></li>
+                <li>
+                    <form name="countrySearch" id="countrySearch">
+                        <input type="text" name="country" list="countries" onfocus="this.value=''" placeholder="Find a country..." required>
+                        <input type="submit" value="Search" id="button" class="button">
+                    </form>
+                    <datalist id="countries">
+                    </datalist>
+                </li>
             </ul>
         </div> 
+        <div class="span12 hide" id="CountryStats">
+            <div id="accepted"></div>
+            
+            <div id="countrySelected" class="grid">
+                <div class="span4" id="countryThrow"></div>
+                <div class="span4 as"><canvas id="countryChart2"></canvas></div>
+                <div class="span4 as"><canvas id="countryChart3"></canvas></div>
+                <div class="span12"><canvas id="countryChart"></canvas></div>
+                
+            </div>
+        </div>
+        <div class="span12 jc"><h3>Global Stats</h3></div>
 
-        <div class="span12 jc"><h2>#Global Stats</h2></div>
-
-        <!-- <div class="item span12 js tc swoopIn" id="makenicebg">
-            <h2 class="ase"><span>Massive</span> Lorem Ipsum</h2>
-            <p class="asl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div> -->
         <div class="item span12 jc ac tc">
             <ul id="stats">
                 <li id="123">Total Cases<br></li>
@@ -68,12 +81,14 @@
                 <li id="128">Deaths: <br></li>
             </ul>
         </div>
+
+        <div class="item span12 js" style="width:100%">
+            <canvas id="gcx"></canvas>
+        </div>
+
         <div class="span12 jc"><h3>Continents</h3></div>
         <div class="item span12 js" style="width:100%">
             <canvas id="myChart"></canvas>
-        </div>
-        <div class="item span12 js" style="width:100%">
-            <canvas id="gcx"></canvas>
         </div>
         <div class="item span12 tc" id="footer">
             Copyright © 2020 Sanjiv Rana - <a href="https://github.com/eync/">Github Profile</a> // <a href="https://github.com/eync/corona-tracker.js">Github Repository</a>

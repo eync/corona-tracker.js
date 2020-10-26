@@ -144,3 +144,209 @@
     });
     }
     
+
+    const drawHistoricalChart = async (casesVal, deathsVal, deathsDate, recoveredVal, countryVal) => {
+    const getChartElement = document.getElementById('countryChart').getContext('2d');
+
+    if (window.drawHistoricalChart != undefined) {
+        window.drawHistoricalChart.destroy();
+    }
+    window.drawHistoricalChart = new Chart(getChartElement, {
+        "type": "line",
+        "data": {
+            "labels": deathsDate,
+            "datasets": [{
+                "label": "Cases",
+                "data": casesVal,
+                "backgroundColor": "rgba(14, 142, 15, 0.1)",
+                "borderColor": "rgb(14, 142, 15)",
+                "pointStyle": "circle",
+                "radius": "0"
+    
+            }, {
+                "label": "Recovered",
+                "data": recoveredVal,
+                "type": "line",
+                "fill": true,
+                "backgroundColor": "rgba(54, 162, 235, 0.1)",
+                "borderColor": "rgb(54, 162, 235)",
+                "pointStyle": "cross"
+    
+            }, {
+                "label": "Deaths",
+                "data": deathsVal,
+                "type": "line",
+                "fill": true,
+                "borderJoinStyle": "round",
+                "borderColor": "rgb(255, 99, 132)",
+                "backgroundColor": "rgba(255, 99, 132, 0.9)",
+                "pointStyle": "cross"
+    
+            }]
+        },
+        "options": {
+            "title": {
+                display: true,
+                text: `COVID-19 ${countryVal} Statistics (last 6 months)`
+            },
+            "tooltips": {
+                intersect: false,
+                mode: 'index',
+                axis: 'y',
+                "callbacks": {
+                    label: function(tooltipItem, data) {
+                        return interFormat(tooltipItem.yLabel);
+                    }
+                }
+            },
+            
+            "scales": {
+                "yAxes": [{
+                    "gridLines": {
+                        display:false
+                    },
+                    "ticks": {
+                        "beginAtZero": true
+                    },
+                    stacked: false
+                }],
+                "xAxes": [{
+                    "gridLines": {
+                        display:false
+                    },
+                    ticks: {
+                        type: 'time',
+                         maxRotation: 0,
+                         maxTicksLimit: 8,
+                         'time': {
+                             displayFormats: {
+                                 quarter: 'MMM YYYY'
+                             }
+                         }
+                      }
+                }]
+            }
+        }
+    });
+    }
+
+
+    const drawOneMillionChart = async (casesVal, deathsVal) => {
+        const getChartElement = document.getElementById('countryChart2').getContext('2d');
+ 
+        if (window.countryOneMillion != undefined) {
+            window.countryOneMillion.destroy();
+        }
+        function addText() {
+
+            var canvas = document.getElementById("countryChart2");
+            var ctx = document.getElementById("countryChart2").getContext("2d");
+          
+            var cx = canvas.width / 2;
+            var cy = canvas.height / 2;
+            var cy1 = canvas.height / 2 -20;
+            var cy2 = canvas.height / 2 +20;
+          
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.font = '14px Arial';
+            ctx.fillStyle = '#3d3d3d';
+            ctx.fillText("Fatality Rate", cx, cy1);
+            ctx.fillStyle = "#fdca40";  
+            ctx.font = "20px Arial";
+            ctx.fillText(`${((deathsVal / casesVal) * 100).toFixed(2)} %`, cx, cy);
+            ctx.font = '12px Arial';
+            ctx.fillStyle = '#3d3d3d';
+            ctx.fillText("From Total Cases", cx, cy2);
+          
+          }
+        window.countryOneMillion = new Chart(getChartElement, {
+            "type": "doughnut",
+
+            "data": {
+                "labels": ["Cases", "Deaths"],
+                "datasets": [{
+                    
+                    "data": [casesVal, deathsVal],
+                    "backgroundColor": ["#3d3d3d30", "rgba(255, 99, 132, 0.9)"],
+                    "borderColor": "#9c9c9c30",
+        
+                }]
+            },
+            "options": {
+                "title": {
+                    display: false
+                    
+                },
+                animation:{
+                    onProgress : addText
+                },
+                "legend": {
+                    display: false
+                },
+                "tooltips": false
+                
+
+            }
+        });
+        }
+
+        const drawRecoveryChart = async (casesVal, recoveredVal) => {
+            const getChartElement = document.getElementById('countryChart3').getContext('2d');
+     
+            if (window.countryRecovery != undefined) {
+                window.countryRecovery.destroy();
+            }
+            function addText() {
+    
+                var canvas = document.getElementById("countryChart3");
+                var ctx = document.getElementById("countryChart3").getContext("2d");
+              
+                var cx = canvas.width / 2;
+                var cy = canvas.height / 2;
+                var cy1 = canvas.height / 2 -20;
+                var cy2 = canvas.height / 2 +20;
+              
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.font = '14px Arial';
+                ctx.fillStyle = '#3d3d3d';
+                ctx.fillText("Recovery Rate", cx, cy1);
+                ctx.fillStyle = "#fdca40";  
+                ctx.font = "20px Arial";
+                ctx.fillText(`${((recoveredVal / casesVal) * 100).toFixed(2)} %`, cx, cy);
+                ctx.font = '12px Arial';
+                ctx.fillStyle = '#3d3d3d';
+                ctx.fillText("From Total Cases", cx, cy2);
+              
+              }
+            window.countryRecovery = new Chart(getChartElement, {
+                "type": "doughnut",
+    
+                "data": {
+                    "labels": ["Cases", "Deaths"],
+                    "datasets": [{
+                        
+                        "data": [recoveredVal, casesVal],
+                        "backgroundColor": ["#3d3d3d30", "rgba(54, 162, 235, 0.9)"],
+                        "borderColor": "#9c9c9c30",
+            
+                    }]
+                },
+                "options": {
+                    "title": {
+                        display: false
+                        
+                    },
+                    animation:{
+                        onProgress : addText
+                    },
+                    "legend": {
+                        display: false
+                    },
+                    "tooltips": false
+                    
+    
+                }
+            });
+            }

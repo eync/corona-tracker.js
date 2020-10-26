@@ -13,7 +13,7 @@
 ================================================== */
 iframe { border: 0; }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, body, div, span, input[type="submit"], applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
 
 body {line-height: 1; }
@@ -153,7 +153,7 @@ a:hover, a:focus { color: var(--alink-hover); }
 a:visited { color: var(--alink-visited); }
 a:active { color: var(--alink-active); }
 
-a.button, button {
+input[type="submit"], a.button, button {
     display: inline-block;
     height: 38px;
     padding: 0 30px;
@@ -171,8 +171,8 @@ a.button, button {
     box-sizing: border-box;
 }
 
-button {background-color: var(--primary-button-bg);border: 1px solid var(--primary-button-bdr);color: var(--primary-button);}
-button:hover {background-color: var(--primary-button-hover-bg);border: 1px solid var(--primary-button-hover-bdr);color: var(--primary-button-hover);}
+input[type="submit"], button {background-color: var(--primary-button-bg);border: 1px solid var(--primary-button-bdr);color: var(--primary-button);}
+input[type="submit"]:hover, button:hover {background-color: var(--primary-button-hover-bg);border: 1px solid var(--primary-button-hover-bdr);color: var(--primary-button-hover);}
 
 a.button{background-color: var(--a-button-bg);border: 1px solid var(--a-button-bdr);color: var(--a-button);}
 a.button:active, a.button:visited {color: var(--a-button);}
@@ -272,7 +272,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #33C3F0;
+  border: 1px solid rgb(240, 224, 51);
   outline: 0; }
 label,
 legend {
