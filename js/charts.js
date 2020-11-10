@@ -111,7 +111,7 @@
             "tooltips": {
                 intersect: false,
                 mode: 'index',
-                axis: 'y',
+                axis: 'x',
                 "callbacks": {
                     label: function(tooltipItem, data) {
                         return interFormat(tooltipItem.yLabel);
@@ -192,7 +192,7 @@
             "tooltips": {
                 intersect: false,
                 mode: 'index',
-                axis: 'y',
+                axis: 'x',
                 "callbacks": {
                     label: function(tooltipItem, data) {
                         return interFormat(tooltipItem.yLabel);
